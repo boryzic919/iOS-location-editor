@@ -8,19 +8,31 @@
 
 import Foundation
 
+/**
+ Class representing single localization string in form of key: "value"; as found in strings files
+ */
 class LocalizationString {
     let key: String
     private(set) var value: String
+    private (set) var message: String?
 
-    init(key: String, value: String) {
+    init(key: String, value: String, message: String?) {
         self.key = key
         self.value = value
+        self.message = message
     }
 
+    /**
+     Updates the localization string with a new value
+
+     Parameter value: new value
+     */
     func update(value: String) {
         self.value = value
     }
 }
+
+// MARK: Description
 
 extension LocalizationString: CustomStringConvertible {
     var description: String {
