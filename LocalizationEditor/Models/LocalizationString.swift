@@ -13,21 +13,10 @@ import Foundation
  */
 class LocalizationString {
     let key: String
-    private(set) var value: String
-    private (set) var message: String?
+    let value: String
 
-    init(key: String, value: String, message: String?) {
+    init(key: String, value: String) {
         self.key = key
-        self.value = value
-        self.message = message
-    }
-
-    /**
-     Updates the localization string with a new value
-
-     Parameter value: new value
-     */
-    func update(value: String) {
         self.value = value
     }
 }
@@ -37,5 +26,15 @@ class LocalizationString {
 extension LocalizationString: CustomStringConvertible {
     var description: String {
         return "\(key) = \(value)"
+    }
+}
+
+extension LocalizationString: Comparable {
+    static func < (lhs: LocalizationString, rhs: LocalizationString) -> Bool {
+        return lhs.key < rhs.key
+    }
+
+    static func == (lhs: LocalizationString, rhs: LocalizationString) -> Bool {
+        return lhs.key == rhs.key && lhs.value == rhs.value
     }
 }

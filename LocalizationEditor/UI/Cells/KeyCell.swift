@@ -9,12 +9,11 @@
 import Cocoa
 import Foundation
 
-class KeyCell: NSTableCellView {
+final class KeyCell: NSTableCellView {
     // MARK: - Outlets
 
     @IBOutlet private weak var keyLabel: NSTextField!
-    @IBOutlet private weak var messageLabel: NSTextField!
-    
+
     // MARK: - Properties
 
     static let identifier = "KeyCell"
@@ -22,11 +21,6 @@ class KeyCell: NSTableCellView {
     var key: String? {
         didSet {
             keyLabel.stringValue = key ?? ""
-        }
-    }
-    var message: String? {
-        didSet {
-            messageLabel.stringValue = message ?? ""
         }
     }
 }
